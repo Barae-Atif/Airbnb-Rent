@@ -5,10 +5,11 @@
   font-family: Arial, sans-serif;
 }
 
+/* ===== BODY (space for fixed navbar) ===== */
 body{
   background:#fff;
   color:#111;
-  padding-top:70px; /* space for fixed header */
+  padding-top:70px; /* IMPORTANT for fixed navbar */
 }
 
 .container{
@@ -22,29 +23,32 @@ a{
   color:inherit;
 }
 
-/* ===== HEADER ===== */
+/* ===== FIXED NAVBAR ===== */
 header{
-  position:flex;
+  position:fixed;      /* FIXED when scrolling */
   top:0;
   left:0;
   width:100%;
   background:#000000;
   color:white;
   z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,0.15);
 }
 
 .navbar{
-  display:fixed;
+  display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 0;
 }
 
+/* Logo */
 .logo img{
-  height: 50px;px;
+  height:38px;
   display:block;
 }
 
+/* Navigation links */
 nav a{
   margin-left:18px;
   font-weight:bold;
@@ -77,7 +81,7 @@ nav a{
   cursor:pointer;
 }
 
-/* ===== SECTIONS ===== */
+/* ===== TITLES ===== */
 h2{
   margin:30px 0 15px;
 }
@@ -94,6 +98,7 @@ h2{
   border-radius:12px;
   overflow:hidden;
   box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  background:#fff;
 }
 
 .card img{
