@@ -2,34 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StayBNB | Home</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="shortcut icon" href="./Images/favicon.png" type="image/x-icon">
+ <link rel="shortcut icon" href="./Images/favicon.png" type="image/x-icon">
+ 
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header>
   <div class="container navbar">
-    <a href="index.html" class="logo"><img src="./Images/logo.png" alt="Logo"></a>
+    <a class="logo" href="index.html">
+      <img src="./Images/logo.png" alt="">
+    </a>
     <nav>
       <a href="index.html">Home</a>
-      <a href="login.html">Cities</a>
       <a href="favorites.html">Favorites</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
     </nav>
   </div>
 </header>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <div>
-    <h1>Find your stay in Morocco</h1>
-    <p>Casablanca • Rabat • Marrakech • Tangier</p><br>
-    <!-- IMPORTANT: goes to login page -->
-    <a href="login.html"><button>Explore Cities</button></a>
+  <div class="hero-content">
+    <h1>Find your perfect stay in Morocco</h1>
+    <p>Book unique homes and riads with StayBNB</p>
+    <button class="cta" onclick="document.getElementById('cities').scrollIntoView({behavior:'smooth'})">
+      Explore cities
+    </button>
   </div>
 </section>
 
-<footer>© 2026 StayBNB Morocco</footer>
+<!-- ===== CITIES SECTION ===== -->
+<section class="section" id="cities">
+  <div class="container">
+    <h2 class="section-title">Popular Cities</h2>
+
+    <div class="grid">
+
+      <!-- Casablanca -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=1400&q=80" alt="Casablanca">
+        <div class="body">
+          <div class="tag">Casablanca</div>
+          <h3>Homes in Casablanca</h3>
+          <p>Modern apartments in the economic capital.</p>
+          <a href="casablanca.html">
+            <button class="reserve-btn">View homes</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Rabat -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1400&q=80" alt="Rabat">
+        <div class="body">
+          <div class="tag">Rabat</div>
+          <h3>Homes in Rabat</h3>
+          <p>Comfortable stays in the capital city.</p>
+          <a href="rabat.html">
+            <button class="reserve-btn">View homes</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Marrakech -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1400&q=80" alt="Marrakech">
+        <div class="body">
+          <div class="tag">Marrakech</div>
+          <h3>Homes in Marrakech</h3>
+          <p>Riads and luxury apartments.</p>
+          <a href="marrakech.html">
+            <button class="reserve-btn">View homes</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tangier -->
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=1400&q=80" alt="Tangier">
+        <div class="body">
+          <div class="tag">Tangier</div>
+          <h3>Homes in Tangier</h3>
+          <p>Sea views and relaxing stays.</p>
+          <a href="tangier.html">
+            <button class="reserve-btn">View homes</button>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  © 2026 StayBNB. All rights reserved.
+</footer>
+
 </body>
 </html>
+
+
 
 

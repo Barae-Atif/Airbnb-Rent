@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success | StayBNB</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./Images/favicon.png">
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="logo" href="index.html"><img src="./Images/logo.png" alt="Logo"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Reservation Successful ✅</h2>
+
+    <div class="form" style="text-align:center">
+      <p id="successInfo" style="line-height:1.7;margin-bottom:14px;font-weight:800;"></p>
+
+      <a href="index.html">
+        <button class="reserve-btn" type="button">Back to Home</button>
+      </a>
+
+      <p style="margin-top:12px;color:#6b7280;font-weight:700;">
+        Thank you for using StayBNB!
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 StayBNB. All rights reserved.</footer>
+
+<script>
+  const raw = localStorage.getItem("staybnb_selected_home");
+  const box = document.getElementById("successInfo");
+
+  if(!raw){
+    box.innerHTML = "Your reservation is confirmed.";
+  }else{
+    const item = JSON.parse(raw);
+    box.innerHTML = `
+      Your reservation has been confirmed!<br><br>
+      <b>City:</b> ${item.city}<br>
+      <b>Home:</b> ${item.title}<br>
+      <b>Price:</b> ${item.price} MAD/night
+    `;
+  }
+</script>
+
+</body>
+</html>

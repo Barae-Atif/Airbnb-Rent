@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Rabat | StayBNB</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rabat | StayBNB</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="./Images/favicon.png">
 </head>
 <body>
 
 <header>
   <div class="container navbar">
-    <a href="index.html" class="logo"><img src="./Images/logo.png" alt="Logo"></a>
+    <a class="logo" href="index.html"><img src="./Images/logo.png"></a>
     <nav>
       <a href="index.html">Home</a>
-      <a href="cities.html">Cities</a>
       <a href="favorites.html">Favorites</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
     </nav>
   </div>
 </header>
 
-<div class="container">
-  <h2>Rabat Apartments</h2>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Rabat Homes</h2>
 
-  <div class="grid">
-    <div class="card" data-id="rabat1" data-city="Rabat" data-title="City Center Apartment"
-      data-price="95" data-rating="4.7"
-      data-img="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-      <div class="body">
-        <div class="city">Rabat</div>
-        <h3>City Center Apartment</h3>
-        <div class="row"><span>$95/night</span><span>⭐4.7</span></div>
-        <button class="fav" type="button">♡</button>
-      </div>
-    </div>
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+        <div class="body">
+          <h3>City Center Studio</h3>
+          <div class="row">300 MAD/night</div>
 
-    <div class="card" data-id="rabat2" data-city="Rabat" data-title="Modern Apartment with Balcony"
-      data-price="80" data-rating="4.6"
-      data-img="https://images.unsplash.com/photo-1493809842364-78817add7ffb">
-      <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb">
-      <div class="body">
-        <div class="city">Rabat</div>
-        <h3>Modern Apartment with Balcony</h3>
-        <div class="row"><span>$80/night</span><span>⭐4.6</span></div>
-        <button class="fav" type="button">♡</button>
+          <button class="reserve-btn"
+            onclick="goReserve('City Center Studio','300','Rabat')">
+            Reserve
+          </button>
+
+          <button class="fav-btn"
+            data-id="rabat1"
+            data-city="Rabat"
+            data-title="City Center Studio"
+            data-price="300"
+            data-img="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+            ♡ Favorite
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<footer>© 2026 StayBNB Morocco</footer>
+<footer>© 2026 StayBNB</footer>
 <script src="script.js"></script>
 </body>
 </html>

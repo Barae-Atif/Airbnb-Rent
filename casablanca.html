@@ -1,55 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Casablanca | StayBNB</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="./Images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casablanca | StayBNB</title>
+<link rel="stylesheet" href="style.css">
+<link rel="shortcut icon" href="./Images/favicon.png" type="image/x-icon">
 </head>
 <body>
 
 <header>
   <div class="container navbar">
-    <a href="index.html" class="logo"><img src="./Images/logo.png" alt="Logo"></a>
+    <a class="logo" href="index.html"><img src="./Images/logo.png"></a>
     <nav>
       <a href="index.html">Home</a>
-      <a href="cities.html">Cities</a>
       <a href="favorites.html">Favorites</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
     </nav>
   </div>
 </header>
 
-<div class="container">
-  <h2>Casablanca Apartments</h2>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Casablanca Homes</h2>
 
-  <div class="grid">
-    <div class="card" data-id="casa1" data-city="Casablanca" data-title="Modern Apartment in Casablanca"
-      data-price="120" data-rating="4.8"
-      data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
-      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
-      <div class="body">
-        <div class="city">Casablanca</div>
-        <h3>Modern Apartment in Casablanca</h3>
-        <div class="row"><span>$120/night</span><span>⭐4.8</span></div>
-        <button class="fav" type="button">♡</button>
-      </div>
-    </div>
+    <div class="grid">
+      <div class="card">
+        <img src="./Images/casablanca.png" alt="" srcset="">
+        <div class="body">
+          <h3>Modern Downtown Apartment</h3>
+          <div class="row">400 MAD/night</div>
 
-    <div class="card" data-id="casa2" data-city="Casablanca" data-title="City Center Studio"
-      data-price="90" data-rating="4.6"
-      data-img="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-      <div class="body">
-        <div class="city">Casablanca</div>
-        <h3>City Center Studio</h3>
-        <div class="row"><span>$90/night</span><span>⭐4.6</span></div>
-        <button class="fav" type="button">♡</button>
+          <button class="reserve-btn"
+            onclick="goReserve('Modern Downtown Apartment','400','Casablanca')">
+            Reserve
+          </button>
+
+          <button class="fav-btn"
+            data-id="casa1"
+            data-city="Casablanca"
+            data-title="Modern Downtown Apartment"
+            data-price="400"
+            data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
+            ♡ Favorite
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<footer>© 2026 StayBNB Morocco</footer>
+<footer>© 2026 StayBNB</footer>
 <script src="script.js"></script>
 </body>
 </html>

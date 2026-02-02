@@ -1,57 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Marrakech | StayBNB</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marrakech | StayBNB</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="./Images/favicon.png">
 </head>
 <body>
 
 <header>
   <div class="container navbar">
-    <a href="index.html" class="logo"><img src="./Images/logo.png" alt="Logo"></a>
+    <a class="logo" href="index.html"><img src="./Images/logo.png"></a>
     <nav>
       <a href="index.html">Home</a>
-      <a href="cities.html">Cities</a>
       <a href="favorites.html">Favorites</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
     </nav>
   </div>
 </header>
 
-<div class="container">
-  <h2>Marrakech Apartments</h2>
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Marrakech Homes</h2>
 
-  <div class="grid">
+    <div class="grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+        <div class="body">
+          <h3>Luxury Riad Apartment</h3>
+          <div class="row">650 MAD/night</div>
 
-    <div class="card" data-id="marr1" data-city="Marrakech" data-title="Luxury Apartment in Marrakech"
-      data-price="140" data-rating="4.8"
-      data-img="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
-      <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
-      <div class="body">
-        <div class="city">Marrakech</div>
-        <h3>Luxury Apartment in Marrakech</h3>
-        <div class="row"><span>$140/night</span><span>⭐4.8</span></div>
-        <button class="fav" type="button">♡</button>
+          <button class="reserve-btn"
+            onclick="goReserve('Luxury Riad Apartment','650','Marrakech')">
+            Reserve
+          </button>
+
+          <button class="fav-btn"
+            data-id="marr1"
+            data-city="Marrakech"
+            data-title="Luxury Riad Apartment"
+            data-price="650"
+            data-img="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+            ♡ Favorite
+          </button>
+        </div>
       </div>
     </div>
-
-    <div class="card" data-id="marr2" data-city="Marrakech" data-title="Modern Downtown Apartment"
-      data-price="110" data-rating="4.7"
-      data-img="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
-      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2">
-      <div class="body">
-        <div class="city">Marrakech</div>
-        <h3>Modern Downtown Apartment</h3>
-        <div class="row"><span>$110/night</span><span>⭐4.7</span></div>
-        <button class="fav" type="button">♡</button>
-      </div>
-    </div>
-
   </div>
-</div>
+</section>
 
-<footer>© 2026 StayBNB Morocco</footer>
+<footer>© 2026 StayBNB</footer>
 <script src="script.js"></script>
 </body>
 </html>

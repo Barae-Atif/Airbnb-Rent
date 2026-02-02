@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations | StayBNB</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./Images/favicon.png">
+</head>
+<body>
+
+<header>
+  <div class="container navbar">
+    <a class="logo" href="index.html"><img src="./Images/logo.png" alt="Logo"></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="login.html">Login</a>
+      <a href="reservations.html">Reservations</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Your Reservation</h2>
+
+    <div class="form">
+      <p id="reservationInfo" style="line-height:1.7;margin-bottom:12px;"></p>
+
+      <!-- NO check-in/out, only confirm -->
+      <button class="reserve-btn" type="button" onclick="confirmReservation()">
+        Confirm Reservation
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 StayBNB. All rights reserved.</footer>
+<script src="script.js"></script>
+</body>
+</html>
+

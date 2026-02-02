@@ -1,124 +1,82 @@
-// ===== FAVORITES =====
-const FAV_KEY = "staybnb_favorites";
-const LOGIN_KEY = "staybnb_logged_in";
+const LOGIN = "staybnb_login";
+const RESERVE = "staybnb_reserve";
+const FAVS = "staybnb_favs";
 
-function getFavs(){
-  return JSON.parse(localStorage.getItem(FAV_KEY)) || [];
-}
-function saveFavs(favs){
-  localStorage.setItem(FAV_KEY, JSON.stringify(favs));
-}
+/* Favorites */
+const getFavs = () => JSON.parse(localStorage.getItem(FAVS)) || [];
+const saveFavs = (f) => localStorage.setItem(FAVS, JSON.stringify(f));
+
 function toggleFav(item){
   let favs = getFavs();
-  const exists = favs.find(x => x.id === item.id);
-  if (exists) favs = favs.filter(x => x.id !== item.id);
-  else favs.push(item);
+  const exist = favs.find(x=>x.id===item.id);
+  favs = exist ? favs.filter(x=>x.id!==item.id) : [...favs,item];
   saveFavs(favs);
 }
 
-// Setup hearts on listing pages
-function setupFavButtons(){
-  document.querySelectorAll(".card[data-id]").forEach(card=>{
-    const btn = card.querySelector(".fav");
-    if(!btn) return;
+function initFavButtons(){
+  document.querySelectorAll(".fav-btn").forEach(btn=>{
+    const id = btn.dataset.id;
+    btn.classList.toggle("active", getFavs().some(f=>f.id===id));
+    btn.innerText = btn.classList.contains("active") ? "♥ Favorite" : "♡ Favorite";
 
-    const item = {
-      id: card.dataset.id,
-      city: card.dataset.city,
-      title: card.dataset.title,
-      price: card.dataset.price,
-      rating: card.dataset.rating,
-      img: card.dataset.img
+    btn.onclick = ()=>{
+      toggleFav({
+        id,
+        city:btn.dataset.city,
+        title:btn.dataset.title,
+        price:btn.dataset.price,
+        img:btn.dataset.img
+      });
+      initFavButtons();
     };
-
-    const saved = getFavs().some(x => x.id === item.id);
-    btn.textContent = saved ? "♥" : "♡";
-    btn.classList.toggle("active", saved);
-
-    btn.addEventListener("click", ()=>{
-      toggleFav(item);
-      const now = getFavs().some(x => x.id === item.id);
-      btn.textContent = now ? "♥" : "♡";
-      btn.classList.toggle("active", now);
-    });
   });
 }
 
-// Favorites page render
-function showFavorites(){
-  const box = document.getElementById("favoritesBox");
+function renderFavorites(){
+  const box = document.getElementById("favoritesGrid");
   if(!box) return;
-
   const favs = getFavs();
-  if(favs.length === 0){
-    box.innerHTML = `<p>No favorites yet. Go to <a href="cities.html" style="color:#e11d48;font-weight:bold;">Cities</a> and tap ♡.</p>`;
+  if(!favs.length){
+    box.innerHTML = "<p>No favorites yet.</p>";
     return;
   }
-
-  box.innerHTML = favs.map(item=>`
+  box.innerHTML = favs.map(f=>`
     <div class="card">
-      <img src="${item.img}">
+      <img src="${f.img}">
       <div class="body">
-        <div class="city">${item.city}</div>
-        <h3>${item.title}</h3>
-        <div class="row">
-          <span>$${item.price}/night</span>
-          <span>⭐ ${item.rating}</span>
-        </div>
-        <button class="fav active" data-remove="${item.id}" type="button">♥ Remove</button>
+        <div class="tag">${f.city}</div>
+        <h3>${f.title}</h3>
+        <div class="row">${f.price} MAD/night</div>
+        <button class="reserve-btn" onclick="goReserve('${f.title}','${f.price}','${f.city}')">Reserve</button>
       </div>
     </div>
   `).join("");
-
-  box.querySelectorAll("[data-remove]").forEach(btn=>{
-    btn.addEventListener("click", ()=>{
-      const id = btn.dataset.remove;
-      saveFavs(getFavs().filter(x=>x.id!==id));
-      showFavorites();
-    });
-  });
 }
 
-// ===== LOGIN =====
-function setupLogin(){
-  const loginBtn = document.getElementById("loginBtn");
-  if(!loginBtn) return;
-
-  loginBtn.addEventListener("click", ()=>{
-    const email = document.getElementById("email").value.trim();
-    const pass  = document.getElementById("password").value.trim();
-    const msg   = document.getElementById("msg");
-
-    if(email === "" || pass === ""){
-      msg.textContent = "Please fill email and password.";
-      return;
-    }
-
-    // Save login (simple demo)
-    localStorage.setItem(LOGIN_KEY, "yes");
-    msg.textContent = "Login success! Redirecting...";
-
-    setTimeout(()=>{ window.location.href = "cities.html"; }, 600);
-  });
+/* Reserve flow */
+function goReserve(title,price,city){
+  localStorage.setItem(RESERVE,JSON.stringify({title,price,city}));
+  window.location.href = localStorage.getItem(LOGIN) ? "reservations.html" : "login.html";
 }
 
-// Protect cities and city pages (must be logged in)
-function protectPages(){
-  const needLoginPages = [
-    "cities.html","casablanca.html","rabat.html","marrakech.html","tangier.html"
-  ];
-
-  const current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
-  const logged = localStorage.getItem(LOGIN_KEY) === "yes";
-
-  if(needLoginPages.includes(current) && !logged){
-    window.location.href = "login.html";
-  }
+function loginNow(){
+  localStorage.setItem(LOGIN,"yes");
+  window.location.href="reservations.html";
 }
 
-document.addEventListener("DOMContentLoaded", ()=>{
-  protectPages();
-  setupLogin();
-  setupFavButtons();
-  showFavorites();
+function showReservation(){
+  const box=document.getElementById("reservationInfo");
+  if(!box) return;
+  const r=JSON.parse(localStorage.getItem(RESERVE)||"{}");
+  box.innerHTML=`<b>${r.title}</b><br>${r.city}<br>${r.price} MAD/night`;
+}
+
+function confirmReservation(){
+  window.location.href="success.html";
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+  initFavButtons();
+  renderFavorites();
+  showReservation();
 });
